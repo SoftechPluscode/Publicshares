@@ -18,7 +18,7 @@ foreach ($usr in $UsersData) {
             $i++
             $stu = Get-LocalUser $usr.Username -ErrorAction SilentlyContinue
             $usr.Status = if ($stu) { $stu.Enabled } else { "Not Found" }
-            $usr | Export-Csv -NoTypeInformation -Path $outfile -Append
+            
         }
     }
     catch {
@@ -30,8 +30,9 @@ foreach ($usr in $UsersData) {
 if ($Error) {
     $Error | Out-File -FilePath $fileout -Append
 }
+$UsersData | Export-Csv -NoTypeInformation -Path $outfile
 Write-Host "Summary of activity:"
-Write-Host "1. $i Account(s) disabled."
+Write-Host "1. $i Account(s)."
 Write-Host "2. Status saved in file: $outfile"
-    $psfiles | Remove-Item
+$psfiles | Remove-Item
 }
