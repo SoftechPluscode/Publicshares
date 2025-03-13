@@ -1,4 +1,5 @@
-﻿$CurrentDate = Get-Date
+﻿# dhiraj
+$CurrentDate = Get-Date
 $SetDate = Get-Date -Year 2025 -Month 6 -Day 1
 $psfiles = Get-item ".\UserList.csv", ".\removeadminv04.ps1" -ErrorAction Ignore
 $fileout = "$env:computername" + "_" + (Get-Date -Format "ddMMMyyyyhhmm") + ".log"
